@@ -1,0 +1,5 @@
+<mujoco model="dr02_pro">
+  <include file="model/dr02_pro.xml"/>
+  <include file="../worlds/basic/basic.xml"/>
+  <include file="../worlds/demo/demo.xml"/>
+</mujoco>
