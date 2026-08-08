@@ -1,6 +1,10 @@
 # DR02 Pro 仿真
 
-本文档说明 DR02 Pro 仿真。公共依赖和仓库结构请参阅 [DEEPRobotics Simulation 根 README](../README_CN.md)。
+本文档说明 DR02 Pro 仿真。完成 [DEEPRobotics Simulation 根 README](../README_CN.md) 中的环境配置后，在仓库根目录运行：
+
+```bash
+python3 run_sim.py dr02_pro
+```
 
 ## 配置
 

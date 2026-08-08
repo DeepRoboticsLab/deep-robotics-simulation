@@ -1,17 +1,12 @@
 # DR02 Pro Simulation
 
-This document describes the DR02 Pro simulation. For shared requirements and
-repository layout, see the [DEEPRobotics Simulation README](../README.md).
-
-## Run
-
-From the repository root, start the DR02 Pro simulation with:
+This document describes the DR02 Pro simulation. After completing the environment
+setup in the [DEEPRobotics Simulation README](../README.md), run the following
+command from the repository root:
 
 ```bash
 python3 run_sim.py dr02_pro
 ```
-
-Run the SDK and simulator in separate terminals. Both terminals must load the same ROS 2 and `drdds` environments and use the same `ROS_DOMAIN_ID` when one is configured.
 
 ## Configuration
 

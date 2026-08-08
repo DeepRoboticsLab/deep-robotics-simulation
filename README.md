@@ -13,6 +13,7 @@ environment, repository layout, and product navigation.
 | Product | Start Command | Documentation |
 | --- | --- | --- |
 | DR02 Pro | `python3 run_sim.py dr02_pro` | [English](dr02_pro/README.md) / [中文](dr02_pro/README_CN.md) |
+| DR02 Std | `python3 run_sim.py dr02_std` | [English](dr02_std/README.md) / [中文](dr02_std/README_CN.md) |
 
 ## Supported Environments
 

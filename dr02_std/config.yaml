@@ -1,0 +1,28 @@
+# Complete MJCF scene entry, relative to this configuration file.
+scene: scene.xml
+
+simulation:
+  # MuJoCo physics timestep in seconds.
+  timestep_s: 0.001
+  # Frequency for /JOINTS_DATA and IMU Topic publication in Hz.
+  publish_frequency_hz: 500.0
+  # Command timeout in seconds. Whole mode sends zero torque; upper mode pauses physics.
+  command_timeout_s: 0.3
+
+control:
+  # default resolves to whole for DR02 Std.
+  mode: default  # default | whole | upper
+
+viewer:
+  # Launch the MuJoCo viewer.
+  enabled: true
+  # Viewer refresh frequency in Hz.
+  update_frequency_hz: 25.0
+  # Free-camera distance from the lookat point in meters.
+  distance: 3.0
+  # Free-camera target position in meters.
+  lookat: [0.0, 0.0, 0.8]
+  # Free-camera horizontal angle in degrees.
+  azimuth: 45.0
+  # Free-camera vertical angle in degrees.
+  elevation: -30.0

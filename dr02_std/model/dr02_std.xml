@@ -1,0 +1,224 @@
+<mujoco model="dr02_std">
+  <compiler angle="radian" meshdir="meshes" />
+  <asset>
+    <mesh name="base_link" file="meshes/base_link.STL" />
+    <mesh name="body" file="meshes/body.STL" />
+    <mesh name="left_shoulder_y_link" file="meshes/left_shoulder_y_link.STL" />
+    <mesh name="left_shoulder_x_link" file="meshes/left_shoulder_x_link.STL" />
+    <mesh name="left_shoulder_z_link" file="meshes/left_shoulder_z_link.STL" />
+    <mesh name="left_elbow_link" file="meshes/left_elbow_link.STL" />
+    <mesh name="right_shoulder_y_link" file="meshes/right_shoulder_y_link.STL" />
+    <mesh name="right_shoulder_x_link" file="meshes/right_shoulder_x_link.STL" />
+    <mesh name="right_shoulder_z_link" file="meshes/right_shoulder_z_link.STL" />
+    <mesh name="right_elbow_link" file="meshes/right_elbow_link.STL" />
+    <mesh name="left_hip_y_link" file="meshes/left_hip_y_link.STL" />
+    <mesh name="left_hip_x_link" file="meshes/left_hip_x_link.STL" />
+    <mesh name="left_hip_z_link" file="meshes/left_hip_z_link.STL" />
+    <mesh name="left_knee_link" file="meshes/left_knee_link.STL" />
+    <mesh name="left_ankle_y_link" file="meshes/left_ankle_y_link.STL" />
+    <mesh name="left_ankle_x_link" file="meshes/left_ankle_x_link.STL" />
+    <mesh name="right_hip_y_link" file="meshes/right_hip_y_link.STL" />
+    <mesh name="right_hip_x_link" file="meshes/right_hip_x_link.STL" />
+    <mesh name="right_hip_z_link" file="meshes/right_hip_z_link.STL" />
+    <mesh name="right_knee_link" file="meshes/right_knee_link.STL" />
+    <mesh name="right_ankle_y_link" file="meshes/right_ankle_y_link.STL" />
+    <mesh name="right_ankle_x_link" file="meshes/right_ankle_x_link.STL" />
+  </asset>
+  <default>
+    <joint damping="0.1" armature="0.01" frictionloss="0.1" />
+  </default>
+  <worldbody>
+    <body name="base_link" pos="0 0 0.905">
+      <freejoint name="floating_base" />
+      <site name="imu_site" pos="0 0 0" size="0.01" />
+      <inertial pos="9.3e-05 6e-06 0.013442" quat="0.706621 0.70714 0.0181893 -0.0175526" mass="8.06269" diaginertia="0.0478262 0.0379779 0.034616" />
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.75294 0.75294 0.75294 1" mesh="base_link" />
+      <geom size="0.09 0.085" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.75294 0.75294 0.75294 1" />
+      <body name="body" pos="0 0 0.29">
+        <inertial pos="-0.02277 0.004208 0.185037" quat="0.715956 -0.0136239 -0.000497459 0.698013" mass="21.3372" diaginertia="0.598309 0.556305 0.184396" />
+        <joint name="waist_z_joint" pos="0 0 0" axis="0 0 1" range="-1.7453 3.6652" actuatorfrcrange="-137 137" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.75294 0.75294 0.75294 1" mesh="body" />
+        <geom size="0.075 0.075 0.06" pos="0 0 -0.13" type="box" rgba="0.75294 0.75294 0.75294 1" />
+        <geom size="0.11 0.12 0.05" pos="-0.01 0 0" type="box" rgba="0.75294 0.75294 0.75294 1" />
+        <geom size="0.125 0.125 0.13" pos="0 0 0.2" type="box" rgba="0.75294 0.75294 0.75294 1" />
+        <geom size="0.05 0.03" pos="-0.02 0 0.37" type="cylinder" rgba="0.75294 0.75294 0.75294 1" />
+        <geom size="0.12" pos="0 0 0.5" rgba="0.75294 0.75294 0.75294 1" />
+        <body name="left_shoulder_y_link" pos="-0.02 0.22315 0.2349">
+          <inertial pos="0.001479 -0.014833 0.000165" quat="0.535109 0.551574 -0.443626 0.461108" mass="1.40044" diaginertia="0.00199718 0.00199195 0.00101788" />
+          <joint name="left_shoulder_y_joint" pos="0 0 0" axis="0 1 0" range="-3.8397 1.5708" actuatorfrcrange="-137 137" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.75294 0.75294 0.75294 1" mesh="left_shoulder_y_link" />
+          <body name="left_shoulder_x_link">
+            <inertial pos="0.000432 0 -0.048362" quat="0.532489 0.465248 0.465248 0.532489" mass="0.697075" diaginertia="0.002243 0.00160154 0.00157146" />
+            <joint name="left_shoulder_x_joint" pos="0 0 0" axis="1 0 0" range="-0.349066 3.49066" actuatorfrcrange="-137 137" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.75294 0.75294 0.75294 1" mesh="left_shoulder_x_link" />
+            <geom size="0.055 0.0275" pos="0 0 -0.09" type="cylinder" rgba="0.75294 0.75294 0.75294 1" />
+            <geom size="0.055 0.055" quat="0.707107 0 0.707107 0" type="cylinder" rgba="0.75294 0.75294 0.75294 1" />
+            <body name="left_shoulder_z_link" pos="0 0 -0.265">
+              <inertial pos="-0.00426 -0.0003 0.094408" quat="0.999326 0.00651409 -0.0341538 0.0118128" mass="1.72093" diaginertia="0.00613971 0.00580856 0.00193173" />
+              <joint name="left_shoulder_z_joint" pos="0 0 0" axis="0 0 1" range="-2.9671 2.9671" actuatorfrcrange="-137 137" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.75294 0.75294 0.75294 1" mesh="left_shoulder_z_link" />
+              <geom size="0.057 0.02" pos="-0.005 0 0.08" type="cylinder" rgba="0.75294 0.75294 0.75294 1" />
+              <body name="left_elbow_link" quat="0.707105 0 -0.707108 0">
+                <inertial pos="5.5e-05 0.000466 -0.101685" quat="0.938053 0.00116829 -0.000602952 0.346488" mass="1.71097" diaginertia="0.0354123 0.0353879 0.00129576" />
+                <joint name="left_elbow_joint" pos="0 0 0" axis="0 1 0" range="-0.767945 1.74533" actuatorfrcrange="-137 137" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.75294 0.75294 0.75294 1" mesh="left_elbow_link" />
+                <geom size="0.055 0.055" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.75294 0.75294 0.75294 1" />
+                <geom size="0.045 0.11" pos="0 0 -0.17" type="cylinder" rgba="0.75294 0.75294 0.75294 1" />
+                <geom size="0.045" pos="0 0 -0.34" rgba="0.75294 0.75294 0.75294 1" />
+              </body>
+            </body>
+          </body>
+        </body>
+        <body name="right_shoulder_y_link" pos="-0.02 -0.22315 0.2349">
+          <inertial pos="0.001479 0.014833 -0.000165" quat="0.461108 0.443626 -0.551574 0.535109" mass="1.40044" diaginertia="0.00199718 0.00199195 0.00101788" />
+          <joint name="right_shoulder_y_joint" pos="0 0 0" axis="0 1 0" range="-3.8397 1.5708" actuatorfrcrange="-137 137" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.75294 0.75294 0.75294 1" mesh="right_shoulder_y_link" />
+          <body name="right_shoulder_x_link">
+            <inertial pos="0.000432 0 -0.048362" quat="0.532489 0.465248 0.465248 0.532489" mass="0.697075" diaginertia="0.002243 0.00160154 0.00157146" />
+            <joint name="right_shoulder_x_joint" pos="0 0 0" axis="1 0 0" range="-3.49066 0.349066" actuatorfrcrange="-137 137" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="right_shoulder_x_link" />
+            <geom size="0.055 0.0275" pos="0 0 -0.09" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+            <geom size="0.055 0.055" quat="0.707107 0 0.707107 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+            <body name="right_shoulder_z_link" pos="0 0 -0.265">
+              <inertial pos="-0.00426 -0.0003 0.094408" quat="0.999326 0.00651409 -0.0341538 0.0118128" mass="1.72093" diaginertia="0.00613971 0.00580856 0.00193173" />
+              <joint name="right_shoulder_z_joint" pos="0 0 0" axis="0 0 1" range="-2.9671 2.9671" actuatorfrcrange="-137 137" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="right_shoulder_z_link" />
+              <geom size="0.057 0.02" pos="-0.005 0 0.08" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+              <body name="right_elbow_link" quat="0.707105 0 -0.707108 0">
+                <inertial pos="5.5e-05 0.000466 -0.101685" quat="0.938053 0.00116829 -0.000602952 0.346488" mass="1.71097" diaginertia="0.0354123 0.0353879 0.00129576" />
+                <joint name="right_elbow_joint" pos="0 0 0" axis="0 1 0" range="-0.767945 1.74533" actuatorfrcrange="-137 137" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="right_elbow_link" />
+                <geom size="0.055 0.055" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+                <geom size="0.045 0.11" pos="0 0 -0.17" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+                <geom size="0.045" pos="0 0 -0.34" rgba="0.752941 0.752941 0.752941 1" />
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="left_hip_y_link" pos="0 0.1614 0">
+        <inertial pos="0.004243 -0.007887 0.001484" quat="0.129351 0.485332 -0.638265 0.583386" mass="2.63319" diaginertia="0.00579908 0.00555755 0.00529138" />
+        <joint name="left_hip_y_joint" pos="0 0 0" axis="0 1 0" range="-2.7925 1.5708" actuatorfrcrange="-363 363" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="left_hip_y_link" />
+        <geom size="0.07 0.0675" quat="0.707107 0 0.707107 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+        <body name="left_hip_x_link">
+          <inertial pos="0.001042 0.00317 -0.074161" quat="0.691853 -0.153969 -0.143586 0.690663" mass="1.13151" diaginertia="0.00586944 0.00420414 0.00385442" />
+          <joint name="left_hip_x_joint" pos="0 0 0" axis="1 0 0" range="-0.349066 2.618" actuatorfrcrange="-363 363" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="left_hip_x_link" />
+          <body name="left_hip_z_link" pos="0 0 -0.1282">
+            <inertial pos="0.008747 -0.002664 -0.111374" quat="0.999131 0.0295497 0.0291442 0.00393055" mass="2.68437" diaginertia="0.0302007 0.0285869 0.00748542" />
+            <joint name="left_hip_z_joint" pos="0 0 0" axis="0 0 1" range="-0.5236 3.6652" actuatorfrcrange="-137 137" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="left_hip_z_link" />
+            <geom size="0.07 0.11" pos="0 0 -0.115" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+            <body name="left_knee_link" pos="0 0 -0.2912">
+              <inertial pos="-0.004924 -0.001316 -0.092649" quat="0.99983 -0.00969714 -0.0151271 0.00424973" mass="4.24665" diaginertia="0.0878984 0.0870418 0.00921174" />
+              <joint name="left_knee_joint" pos="0 0 0" axis="0 1 0" range="-0.17453 2.4958" actuatorfrcrange="-363 363" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="left_knee_link" />
+              <geom size="0.06 0.07" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+              <geom size="0.06 0.14" pos="-0.02 0 -0.21" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+              <body name="left_ankle_y_link" pos="0 0 -0.41">
+                <inertial pos="0.000479 0.003282 0.000327" quat="-0.0255077 0.708777 0.00920828 0.704911" mass="1.37783" diaginertia="0.00190608 0.00177252 0.0015284" />
+                <joint name="left_ankle_y_joint" pos="0 0 0" axis="0 1 0" range="-1.0472 0.7854" actuatorfrcrange="-137 137" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="left_ankle_y_link" />
+                <geom size="0.044 0.055" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+                <body name="left_ankle_x_link">
+                  <inertial pos="0.046836 6.8e-05 -0.032705" quat="0.476848 0.522612 0.519885 0.478761" mass="1.48475" diaginertia="0.00862101 0.00812021 0.00238478" />
+                  <joint name="left_ankle_x_joint" pos="0 0 0" axis="1 0 0" range="-0.61087 0.61087" actuatorfrcrange="-50 50" />
+                  <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="left_ankle_x_link" />
+                  <geom size="0.15 0.055 0.03" pos="0.045 0 -0.045" type="box" rgba="0.752941 0.752941 0.752941 1" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="right_hip_y_link" pos="0 -0.1614 0">
+        <inertial pos="-0.004243 0.007887 0.001484" quat="0.638265 0.583386 -0.129351 0.485332" mass="2.63319" diaginertia="0.00579908 0.00555755 0.00529138" />
+        <joint name="right_hip_y_joint" pos="0 0 0" axis="0 1 0" range="-2.7925 1.5708" actuatorfrcrange="-363 363" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="right_hip_y_link" />
+        <geom size="0.07 0.0675" quat="0.707107 0 0.707107 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+        <body name="right_hip_x_link">
+          <inertial pos="-0.001042 -0.00317 -0.074161" quat="0.691853 0.153969 0.143586 0.690663" mass="1.13151" diaginertia="0.00586944 0.00420414 0.00385442" />
+          <joint name="right_hip_x_joint" pos="0 0 0" axis="1 0 0" range="-2.618 0.349066" actuatorfrcrange="-363 363" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="right_hip_x_link" />
+          <body name="right_hip_z_link" pos="0 0 -0.1282">
+            <inertial pos="0.008747 -0.002664 -0.111374" quat="0.999131 0.0295497 0.0291442 0.00393055" mass="2.68437" diaginertia="0.0302007 0.0285869 0.00748542" />
+            <joint name="right_hip_z_joint" pos="0 0 0" axis="0 0 1" range="-3.6652 0.5236" actuatorfrcrange="-137 137" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="right_hip_z_link" />
+            <geom size="0.07 0.11" pos="0 0 -0.115" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+            <body name="right_knee_link" pos="0 0 -0.2912">
+              <inertial pos="-0.004924 -0.001316 -0.092649" quat="0.99983 -0.00969714 -0.0151271 0.00424973" mass="4.24665" diaginertia="0.0878984 0.0870418 0.00921174" />
+              <joint name="right_knee_joint" pos="0 0 0" axis="0 1 0" range="-0.17453 2.4958" actuatorfrcrange="-363 363" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="right_knee_link" />
+              <geom size="0.06 0.07" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+              <geom size="0.06 0.14" pos="-0.02 0 -0.21" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+              <body name="right_ankle_y_link" pos="0 0 -0.41">
+                <inertial pos="0.000479 0.003282 0.000327" quat="-0.0255077 0.708777 0.00920828 0.704911" mass="1.37783" diaginertia="0.00190608 0.00177252 0.0015284" />
+                <joint name="right_ankle_y_joint" pos="0 0 0" axis="0 1 0" range="-1.0472 0.7854" actuatorfrcrange="-137 137" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="right_ankle_y_link" />
+                <geom size="0.044 0.055" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.752941 0.752941 0.752941 1" />
+                <body name="right_ankle_x_link">
+                  <inertial pos="0.046836 6.8e-05 -0.032705" quat="0.476848 0.522612 0.519885 0.478761" mass="1.48475" diaginertia="0.00862101 0.00812021 0.00238478" />
+                  <joint name="right_ankle_x_joint" pos="0 0 0" axis="1 0 0" range="-0.61087 0.61087" actuatorfrcrange="-50 50" />
+                  <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="right_ankle_x_link" />
+                  <geom size="0.15 0.055 0.03" pos="0.045 0 -0.045" type="box" rgba="0.752941 0.752941 0.752941 1" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="waist_z_joint" joint="waist_z_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="left_shoulder_y_joint" joint="left_shoulder_y_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="left_shoulder_x_joint" joint="left_shoulder_x_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="left_shoulder_z_joint" joint="left_shoulder_z_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="left_elbow_joint" joint="left_elbow_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="right_shoulder_y_joint" joint="right_shoulder_y_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="right_shoulder_x_joint" joint="right_shoulder_x_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="right_shoulder_z_joint" joint="right_shoulder_z_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="right_elbow_joint" joint="right_elbow_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="left_hip_y_joint" joint="left_hip_y_joint" gear="1" ctrllimited="true" ctrlrange="-363 363" />
+    <motor name="left_hip_x_joint" joint="left_hip_x_joint" gear="1" ctrllimited="true" ctrlrange="-363 363" />
+    <motor name="left_hip_z_joint" joint="left_hip_z_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="left_knee_joint" joint="left_knee_joint" gear="1" ctrllimited="true" ctrlrange="-363 363" />
+    <motor name="left_ankle_y_joint" joint="left_ankle_y_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="left_ankle_x_joint" joint="left_ankle_x_joint" gear="1" ctrllimited="true" ctrlrange="-50 50" />
+    <motor name="right_hip_y_joint" joint="right_hip_y_joint" gear="1" ctrllimited="true" ctrlrange="-363 363" />
+    <motor name="right_hip_x_joint" joint="right_hip_x_joint" gear="1" ctrllimited="true" ctrlrange="-363 363" />
+    <motor name="right_hip_z_joint" joint="right_hip_z_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="right_knee_joint" joint="right_knee_joint" gear="1" ctrllimited="true" ctrlrange="-363 363" />
+    <motor name="right_ankle_y_joint" joint="right_ankle_y_joint" gear="1" ctrllimited="true" ctrlrange="-137 137" />
+    <motor name="right_ankle_x_joint" joint="right_ankle_x_joint" gear="1" ctrllimited="true" ctrlrange="-50 50" />
+  </actuator>
+  <sensor>
+    <framequat name="base_quat" objtype="site" objname="imu_site" />
+    <accelerometer name="base_acc" site="imu_site" />
+    <gyro name="base_omega" site="imu_site" />
+  </sensor>
+
+  <keyframe>
+    <key name="default" qpos="
+      0 0 0.905 1 0 0 0
+      0 0 0 0 0 0 0 0 0 0
+      0 0 0 0 0 0 0 0 0 0 0"/>
+  </keyframe>
+
+  <equality>
+    <weld name="upper_base_lock" body1="base_link" active="false" solref="0.002 1"/>
+    <joint name="upper_left_hip_y_lock" joint1="left_hip_y_joint" active="false" solref="0.002 1"/>
+    <joint name="upper_left_hip_x_lock" joint1="left_hip_x_joint" active="false" solref="0.002 1"/>
+    <joint name="upper_left_hip_z_lock" joint1="left_hip_z_joint" active="false" solref="0.002 1"/>
+    <joint name="upper_left_knee_lock" joint1="left_knee_joint" active="false" solref="0.002 1"/>
+    <joint name="upper_left_ankle_y_lock" joint1="left_ankle_y_joint" active="false" solref="0.002 1"/>
+    <joint name="upper_left_ankle_x_lock" joint1="left_ankle_x_joint" active="false" solref="0.002 1"/>
+    <joint name="upper_right_hip_y_lock" joint1="right_hip_y_joint" active="false" solref="0.002 1"/>
+    <joint name="upper_right_hip_x_lock" joint1="right_hip_x_joint" active="false" solref="0.002 1"/>
+    <joint name="upper_right_hip_z_lock" joint1="right_hip_z_joint" active="false" solref="0.002 1"/>
+    <joint name="upper_right_knee_lock" joint1="right_knee_joint" active="false" solref="0.002 1"/>
+    <joint name="upper_right_ankle_y_lock" joint1="right_ankle_y_joint" active="false" solref="0.002 1"/>
+    <joint name="upper_right_ankle_x_lock" joint1="right_ankle_x_joint" active="false" solref="0.002 1"/>
+  </equality>
+</mujoco>

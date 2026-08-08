@@ -10,7 +10,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parent
 
 def print_usage() -> None:
     print("Usage: python3 run_sim.py <product>")
-    print("Supported products: dr02_pro")
+    print("Supported products: dr02_pro, dr02_std")
 
 
 def main(argv: list[str]) -> int:
@@ -22,6 +22,11 @@ def main(argv: list[str]) -> int:
         from dr02_pro.mujoco_simulation import run
 
         return run(REPOSITORY_ROOT / "dr02_pro" / "config.yaml")
+
+    if argv[1] == "dr02_std":
+        from dr02_std.mujoco_simulation import run
+
+        return run(REPOSITORY_ROOT / "dr02_std" / "config.yaml")
 
     print(f"Unknown product: {argv[1]}")
     print_usage()

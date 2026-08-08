@@ -11,6 +11,7 @@ DEEPRobotics Simulation 是面向 DEEPRobotics 产品的 MuJoCo 仿真仓库。
 | 产品 | 启动命令 | 产品文档 |
 | --- | --- | --- |
 | DR02 Pro | `python3 run_sim.py dr02_pro` | [English](dr02_pro/README.md) / [中文](dr02_pro/README_CN.md) |
+| DR02 Std | `python3 run_sim.py dr02_std` | [English](dr02_std/README.md) / [中文](dr02_std/README_CN.md) |
 
 ## 支持环境
 
@@ -23,7 +24,7 @@ DEEPRobotics Simulation 是面向 DEEPRobotics 产品的 MuJoCo 仿真仓库。
 
 ## 环境配置
 
-配置 Python 环境前，应先安装 ROS 2 和 `drdds` 消息接口库。`drdds` 由 [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg) 仓库提供，安装和环境加载方式以该仓库的README为准。
+配置 Python 环境前，应先安装 ROS 2 和 `drdds` 消息接口库。`drdds` 由 [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg) 仓库提供，安装和环境加载方式以该仓库的 README 为准。
 
 ### 首次配置
 
