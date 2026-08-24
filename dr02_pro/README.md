@@ -51,8 +51,6 @@ To run without the demo terrain, remove or comment out only the demo include. Th
 
 Whole mode requires a world with collidable ground. Upper mode can run with the robot model and basic environment only.
 
-`model/dr02_pro.urdf` is retained as a structural reference and is not loaded by MuJoCo.
-
 ## Topics
 
 | Direction | Topic | Type |

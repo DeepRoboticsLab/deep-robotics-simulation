@@ -49,8 +49,6 @@ python3 run_sim.py dr02_pro
 
 whole 模式必须使用带碰撞地面的 world。upper 模式可以仅加载机器人模型和基础环境。
 
-`model/dr02_pro.urdf` 保留为结构参考文件，不参与 MuJoCo 加载。
-
 ## Topic
 
 | 方向 | Topic | 类型 |
