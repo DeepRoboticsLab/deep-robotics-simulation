@@ -7,9 +7,9 @@ python3 run_sim.py dr02_std
 ```
 
 `drdds` 消息接口由 [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg.git) 提供。
-请按[安装消息接口](../README_CN.md#安装消息接口)使用公共安装脚本；仿真和 SDK 应使用相同的接口版本。
+请按[安装消息接口](../README_CN.md#31-安装消息接口)使用公共安装脚本；仿真和 SDK 应使用相同的接口版本。
 
-## 配置
+## 1. 配置
 
 [`config.yaml`](config.yaml) 用于配置 DR02 Std 仿真运行参数。
 
@@ -24,7 +24,7 @@ python3 run_sim.py dr02_std
 | `viewer` | `update_frequency_hz` | Viewer 刷新频率，单位为 Hz。 |
 | `viewer` | `distance`、`lookat`、`azimuth`、`elevation` | 自由视角相机位姿。 |
 
-## 控制模式
+## 2. 控制模式
 
 | 模式 | 控制范围 |
 | --- | --- |
@@ -34,7 +34,7 @@ python3 run_sim.py dr02_std
 
 命令超时后，whole 模式继续推进物理仿真并向全部执行器输出 0 力矩；upper 模式暂停物理仿真，保持超时时刻的实际姿态。upper 模式收到新的有效控制命令后恢复仿真；暂停期间的全零命令不会触发恢复。
 
-## 场景组合
+## 3. 场景组合
 
 [`scene.xml`](scene.xml) 是默认配置选择的完整 MJCF 场景：
 
@@ -53,7 +53,7 @@ python3 run_sim.py dr02_std
 whole 模式必须使用带碰撞地面的 world。upper 模式可以仅加载机器人模型和基础环境。
 
 
-## Topic
+## 4. Topic
 
 | 方向 | Topic | 类型 |
 | --- | --- | --- |

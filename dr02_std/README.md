@@ -9,10 +9,10 @@ python3 run_sim.py dr02_std
 ```
 
 The `drdds` interfaces come from [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg.git).
-Follow [Install the Message Interfaces](../README.md#install-the-message-interfaces)
+Follow [Install the Message Interfaces](../README.md#31-install-the-message-interfaces)
 for the shared installer. The simulator and SDK must use the same interface version.
 
-## Configuration
+## 1. Configuration
 
 [`config.yaml`](config.yaml) controls the DR02 Std runtime behavior.
 
@@ -27,7 +27,7 @@ for the shared installer. The simulator and SDK must use the same interface vers
 | `viewer` | `update_frequency_hz` | Viewer refresh frequency in Hz. |
 | `viewer` | `distance`, `lookat`, `azimuth`, `elevation` | Free-camera pose. |
 
-## Control Modes
+## 2. Control Modes
 
 | Mode | Control Scope |
 | --- | --- |
@@ -37,7 +37,7 @@ for the shared installer. The simulator and SDK must use the same interface vers
 
 After a command timeout, whole mode continues physics with zero torque on every actuator. Upper mode pauses physics and holds the actual pose at the timeout. Upper mode resumes when a new effective control command arrives; all-zero commands do not resume a paused simulation.
 
-## Scene Composition
+## 3. Scene Composition
 
 [`scene.xml`](scene.xml) is the complete MJCF scene selected by the default configuration:
 
@@ -56,7 +56,7 @@ To run without the demo terrain, remove or comment out only the demo include. Th
 Whole mode requires a world with collidable ground. Upper mode can run with the robot model and basic environment only.
 
 
-## Topics
+## 4. Topics
 
 | Direction | Topic | Type |
 | --- | --- | --- |
