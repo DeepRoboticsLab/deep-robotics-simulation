@@ -28,26 +28,32 @@ DEEPRobotics Simulation 是面向 DEEPRobotics 产品的 MuJoCo 仿真仓库。
 
 ### 安装消息接口
 
-请先安装 ROS 2 并配置其 apt 软件源，然后在本仓库根目录执行：
+脚本检查依赖，下载消息源码，然后编译并安装其 deb 包。缺少依赖时仅报错，
+不会安装依赖。目标主机需已具备 ROS 2、编译器、CMake/CPack、colcon 和所需
+ROS 消息生成包。在本仓库根目录执行：
 
 ```bash
 ./scripts/install_deep_robotics_msg.sh
 ```
 
-脚本在 Ubuntu 22.04 上选择 Humble，在 Ubuntu 24.04 上选择 Jazzy，支持
-x86-64（`amd64`）和 64 位 ARM（`arm64`）消息接口原生编译。脚本通过 apt 安装
-编译依赖、下载源码、构建 deb 包并安装到 `/opt/ros/<distro>`，最后验证 `drdds` 接口。
-系统安装使用 sudo；下载和编译文件存放在临时目录，成功或失败退出时自动清理，
-不修改 shell 启动文件。脚本不负责安装 ROS 2 本身。
+如果源码已下载或传入本机，直接使用：
 
-默认使用上游 `main` 分支。可通过 `--ref <标签或完整提交SHA>` 固定版本，
-通过 `--jobs N` 调整编译并行数（默认为 2），完整选项见 `--help`。
-再次运行脚本会重新编译并安装所选版本。如果本机已通过 SDK 安装脚本安装了
-相同版本的消息接口，可跳过此步骤。
+```bash
+./scripts/install_deep_robotics_msg.sh --source-dir ~/deep-robotics-msg
+```
 
-通过 deb 安装后，只需加载 `/opt/ros/<ros-distro>/setup.bash`：Ubuntu 22.04 使用
-`humble`，Ubuntu 24.04 使用 `jazzy`。如果选择源码工作空间方式，则每个终端还需
-在激活 Python 环境前加载消息工作空间的 `install/setup.bash`。
+`--source-dir` 跳过下载，无需联网。脚本不执行 apt，只创建源码临时副本进行
+编译，保留原始源码并清理临时文件。仅安装生成的 deb 包时使用 sudo。
+
+Ubuntu 22.04 自动选择 Humble，Ubuntu 24.04 自动选择 Jazzy，消息编译支持
+amd64 和 arm64。可选参数：`--ref <标签或提交>` 指定下载版本（默认 `main`），
+`--jobs N` 设置编译并行数（默认 2）。`--ref` 不可与 `--source-dir` 同时使用，
+完整用法见 `--help`。
+
+如果本机已通过 SDK 安装脚本安装了相同版本的消息接口，可跳过此步骤。
+通过 deb 安装后，每个终端加载 `/opt/ros/<ros-distro>/setup.bash` 即可：
+Ubuntu 22.04 使用 `humble`，Ubuntu 24.04 使用 `jazzy`。如果选择源码工作空间
+方式，还需在激活 Python 环境前加载消息工作空间的 `install/setup.bash`。
 
 ### 首次配置
 

@@ -34,29 +34,35 @@ for manual installation and source builds.
 
 ### Install the Message Interfaces
 
-Install ROS 2 and configure its apt repository first, then run from this repository root:
+The script checks dependencies, downloads the message source, and builds and
+installs its Debian package. Missing dependencies are reported, never installed.
+ROS 2, a compiler, CMake/CPack, colcon, and the required ROS message-generation
+packages must already be present. Run from this repository root:
 
 ```bash
 ./scripts/install_deep_robotics_msg.sh
 ```
 
-The script selects Humble on Ubuntu 22.04 or Jazzy on Ubuntu 24.04 and supports
-native x86-64 (`amd64`) and 64-bit ARM (`arm64`) builds of the message interfaces.
-It installs build dependencies with apt, downloads the source, builds and installs
-the Debian package into `/opt/ros/<distro>`, and verifies the `drdds` interfaces.
-System installation uses sudo. Temporary downloads and build files are removed on
-success or failure; shell startup files are not edited. ROS 2 itself is not installed.
+If the source has already been downloaded or transferred, use it directly:
 
-The default source is upstream `main`. Use `--ref <tag-or-full-commit-SHA>` to select
-a repeatable version and `--jobs N` to adjust compiler parallelism (default: 2).
-See `--help` for all options. Running the script again rebuilds and reinstalls the
-selected revision. If the matching interfaces were already installed on this host
-using the SDK installer, skip this step.
+```bash
+./scripts/install_deep_robotics_msg.sh --source-dir ~/deep-robotics-msg
+```
 
-After Debian installation, sourcing `/opt/ros/<ros-distro>/setup.bash` is sufficient;
-use `humble` on Ubuntu 22.04 or `jazzy` on Ubuntu 24.04. If you build the messages
-as a source workspace instead, also source that workspace's `install/setup.bash`
-in each terminal before activating the Python environment.
+`--source-dir` skips downloading and requires no internet connection. The script
+never runs apt. It builds a temporary copy, preserves supplied sources, and cleans
+up temporary files. Sudo is used only to install the built package.
+
+Ubuntu 22.04 selects Humble; Ubuntu 24.04 selects Jazzy. Both amd64 and arm64 are
+supported for message builds. Optional: `--ref <tag-or-commit>` selects the downloaded
+revision (default: `main`); `--jobs N` sets compiler parallelism (default: 2).
+`--ref` cannot be combined with `--source-dir`. See `--help` for usage.
+
+If matching interfaces were already installed on this host using the SDK installer,
+skip this step. After Debian installation, source `/opt/ros/<ros-distro>/setup.bash`
+in each terminal (`humble` on Ubuntu 22.04, `jazzy` on Ubuntu 24.04). If using a
+source workspace instead, also source its `install/setup.bash` before activating
+the Python environment.
 
 ### First-Time Setup
 
