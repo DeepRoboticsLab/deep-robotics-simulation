@@ -6,6 +6,9 @@
 python3 run_sim.py dr02_pro
 ```
 
+`drdds` 消息接口由 [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg.git) 提供。
+请按[安装消息接口](../README_CN.md#安装消息接口)使用公共安装脚本；仿真和 SDK 应使用相同的接口版本。
+
 ## 配置
 
 [`config.yaml`](config.yaml) 用于配置 DR02 Pro 仿真运行参数。

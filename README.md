@@ -28,8 +28,35 @@ The following environment combinations are supported:
 
 Install ROS 2 and the `drdds` message interface package before configuring the
 Python environment. `drdds` is provided by the
-[deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg)
-repository; follow its README for installation and environment setup.
+[deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg.git)
+repository. Use the installer below, or follow the linked repository documentation
+for manual installation and source builds.
+
+### Install the Message Interfaces
+
+Install ROS 2 and configure its apt repository first, then run from this repository root:
+
+```bash
+./scripts/install_deep_robotics_msg.sh
+```
+
+The script selects Humble on Ubuntu 22.04 or Jazzy on Ubuntu 24.04 and supports
+native x86-64 (`amd64`) and 64-bit ARM (`arm64`) builds of the message interfaces.
+It installs build dependencies with apt, downloads the source, builds and installs
+the Debian package into `/opt/ros/<distro>`, and verifies the `drdds` interfaces.
+System installation uses sudo. Temporary downloads and build files are removed on
+success or failure; shell startup files are not edited. ROS 2 itself is not installed.
+
+The default source is upstream `main`. Use `--ref <tag-or-full-commit-SHA>` to select
+a repeatable version and `--jobs N` to adjust compiler parallelism (default: 2).
+See `--help` for all options. Running the script again rebuilds and reinstalls the
+selected revision. If the matching interfaces were already installed on this host
+using the SDK installer, skip this step.
+
+After Debian installation, sourcing `/opt/ros/<ros-distro>/setup.bash` is sufficient;
+use `humble` on Ubuntu 22.04 or `jazzy` on Ubuntu 24.04. If you build the messages
+as a source workspace instead, also source that workspace's `install/setup.bash`
+in each terminal before activating the Python environment.
 
 ### First-Time Setup
 
@@ -73,6 +100,7 @@ features and configuration.
 ## Repository Layout
 
 ```text
+scripts/         Dependency installation helpers
 run_sim.py       Product simulation entry point
 simulator.py     Shared MuJoCo lifecycle, timing, viewer, and cleanup
 sim_config.py    Shared YAML loading and runtime configuration validation
@@ -84,4 +112,4 @@ worlds/demo/     Built-in demonstration terrain and environment assets
 ## Related Repositories
 
 - [deep-robotics-sdk2](https://github.com/DeepRoboticsLab/deep-robotics-sdk2): ROS 2 SDK, state machines, and Topic examples for DEEPRobotics products.
-- [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg): ROS 2 message interface package shared by the Simulation and SDK. Its ROS 2 package name is `drdds`.
+- [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg.git): ROS 2 message interface package shared by the Simulation and SDK. Its ROS 2 package name is `drdds`.

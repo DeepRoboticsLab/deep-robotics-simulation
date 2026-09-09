@@ -8,6 +8,10 @@ command from the repository root:
 python3 run_sim.py dr02_pro
 ```
 
+The `drdds` interfaces come from [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg.git).
+Follow [Install the Message Interfaces](../README.md#install-the-message-interfaces)
+for the shared installer. The simulator and SDK must use the same interface version.
+
 ## Configuration
 
 [`config.yaml`](config.yaml) controls the DR02 Pro runtime behavior.

@@ -24,7 +24,30 @@ DEEPRobotics Simulation 是面向 DEEPRobotics 产品的 MuJoCo 仿真仓库。
 
 ## 环境配置
 
-配置 Python 环境前，应先安装 ROS 2 和 `drdds` 消息接口库。`drdds` 由 [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg) 仓库提供，安装和环境加载方式以该仓库的 README 为准。
+配置 Python 环境前，应先安装 ROS 2 和 `drdds` 消息接口库。`drdds` 由 [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg.git) 仓库提供，可使用下方脚本自动安装；手动安装或源码编译步骤请参阅该仓库文档。
+
+### 安装消息接口
+
+请先安装 ROS 2 并配置其 apt 软件源，然后在本仓库根目录执行：
+
+```bash
+./scripts/install_deep_robotics_msg.sh
+```
+
+脚本在 Ubuntu 22.04 上选择 Humble，在 Ubuntu 24.04 上选择 Jazzy，支持
+x86-64（`amd64`）和 64 位 ARM（`arm64`）消息接口原生编译。脚本通过 apt 安装
+编译依赖、下载源码、构建 deb 包并安装到 `/opt/ros/<distro>`，最后验证 `drdds` 接口。
+系统安装使用 sudo；下载和编译文件存放在临时目录，成功或失败退出时自动清理，
+不修改 shell 启动文件。脚本不负责安装 ROS 2 本身。
+
+默认使用上游 `main` 分支。可通过 `--ref <标签或完整提交SHA>` 固定版本，
+通过 `--jobs N` 调整编译并行数（默认为 2），完整选项见 `--help`。
+再次运行脚本会重新编译并安装所选版本。如果本机已通过 SDK 安装脚本安装了
+相同版本的消息接口，可跳过此步骤。
+
+通过 deb 安装后，只需加载 `/opt/ros/<ros-distro>/setup.bash`：Ubuntu 22.04 使用
+`humble`，Ubuntu 24.04 使用 `jazzy`。如果选择源码工作空间方式，则每个终端还需
+在激活 Python 环境前加载消息工作空间的 `install/setup.bash`。
 
 ### 首次配置
 
@@ -58,6 +81,7 @@ python3 run_sim.py <product>
 ## 仓库结构
 
 ```text
+scripts/         依赖安装脚本
 run_sim.py       产品仿真启动入口
 simulator.py     公共 MuJoCo 生命周期、时间推进、Viewer 与资源关闭
 sim_config.py    公共 YAML 加载与运行配置校验
@@ -69,4 +93,4 @@ worlds/demo/     仓库自带演示地形和环境资源
 ## 相关仓库
 
 - [deep-robotics-sdk2](https://github.com/DeepRoboticsLab/deep-robotics-sdk2)：DEEPRobotics 产品的 ROS 2 SDK、状态机和 Topic 示例。
-- [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg)：Simulation 与 SDK 共用的 ROS 2 消息接口库，ROS 2 包名为 `drdds`。
+- [deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg.git)：Simulation 与 SDK 共用的 ROS 2 消息接口库，ROS 2 包名为 `drdds`。
