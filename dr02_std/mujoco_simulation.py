@@ -11,6 +11,7 @@ import numpy as np
 import rclpy
 from drdds.msg import JointValue, Joints, JointsCmd, MetaType
 from rclpy.node import Node
+from rclpy.qos import HistoryPolicy, QoSProfile, ReliabilityPolicy
 from rclpy.signals import SignalHandlerOptions
 from sensor_msgs.msg import Imu
 
@@ -21,7 +22,7 @@ from simulator import MuJoCoSimulator
 DOF_NUM = 21
 UPPER_BODY_DOF_NUM = 9
 MUJOCO_ACTUATOR_NUM = 21
-QOS_QUEUE_DEPTH = 50
+COMMAND_QOS_QUEUE_DEPTH = 50
 STARTUP_KEYFRAME = "default"
 
 ACTUATOR_JOINT_NAMES = (
@@ -83,12 +84,20 @@ class DR2StdSimulation(Node):
         self._frame_id = 0
         self._stop_requested = False
 
-        self.joint_pub = self.create_publisher(Joints, "/JOINTS_DATA", QOS_QUEUE_DEPTH)
+        state_qos = QoSProfile(
+            history=HistoryPolicy.KEEP_LAST,
+            depth=1,
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+        )
+        self.joint_pub = self.create_publisher(Joints, "/JOINTS_DATA", state_qos)
         self.imu_base_pub = self.create_publisher(
-            Imu, "/IMU_DATA_BASE", QOS_QUEUE_DEPTH
+            Imu, "/IMU_DATA_BASE", state_qos
         )
         self.cmd_sub = self.create_subscription(
-            JointsCmd, "/JOINTS_CMD", self._handle_joint_command, QOS_QUEUE_DEPTH
+            JointsCmd,
+            "/JOINTS_CMD",
+            self._handle_joint_command,
+            COMMAND_QOS_QUEUE_DEPTH,
         )
         self._publish_timer = self.create_timer(
             1.0 / self.config.publish_frequency_hz, self._publish_state
