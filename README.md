@@ -1,5 +1,7 @@
 # DEEPRobotics Simulation
 
+Learn how to deploy AMP and Mimic policies on the DR02 Pro, from simulation to the real robot, in the tutorial on [YouTube](https://youtu.be/6G4IpndLDF0) or [Bilibili](https://www.bilibili.com/video/BV1q6xD6MEEk/).
+
 **English** | [简体中文](README_CN.md)
 
 DEEPRobotics Simulation is a MuJoCo-based simulation repository for DEEPRobotics products.
